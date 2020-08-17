@@ -2105,7 +2105,7 @@ bootstart(){
 ############Set UP V2ray############
 installv2ray(){
 	set +e
-	bash <(curl -L -s https://install.direct/go.sh) > /dev/null
+	bash <(curl -L -s https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh) > /dev/null
 	rm -rf /etc/v2ray/config.json
 	touch /etc/v2ray/config.json
 	uuid=$(/usr/bin/v2ray/v2ctl uuid)
@@ -2514,7 +2514,7 @@ checkupdate(){
 	apt-get update
 	apt-get upgrade -y
 	if [[ -f /usr/bin/v2ray/v2ray ]]; then
-		curl -LO --progress-bar https://install.direct/go.sh
+		curl -LO --progress-bar https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
 		bash go.sh
 		rm go.sh
 	fi
@@ -2742,7 +2742,7 @@ uninstall(){
 		if (whiptail --title "api" --yesno "卸载 (uninstall) v2ray/ss?" 8 78); then
 		systemctl stop v2ray
 		systemctl disable v2ray
-		wget https://install.direct/go.sh -q --show-progress
+		wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh -q --show-progress
 		bash go.sh --remove
 		rm go.sh
 		fi
