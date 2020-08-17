@@ -2515,8 +2515,8 @@ checkupdate(){
 	apt-get upgrade -y
 	if [[ -f /usr/bin/v2ray/v2ray ]]; then
 		curl -LO --progress-bar https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
-		bash go.sh
-		rm go.sh
+		bash install-release.sh
+		rm install-release.sh
 	fi
 	if [[ -f /usr/local/bin/trojan ]]; then
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"
@@ -2743,8 +2743,8 @@ uninstall(){
 		systemctl stop v2ray
 		systemctl disable v2ray
 		wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh -q --show-progress
-		bash go.sh --remove
-		rm go.sh
+		bash install-release.sh --remove
+		rm install-release.sh
 		fi
 	fi
 	if [[ -f /usr/bin/tor ]]; then
